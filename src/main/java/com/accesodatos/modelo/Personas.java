@@ -1,4 +1,4 @@
-package com.accesodatos.primeraversion;
+package com.accesodatos.modelo;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,20 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.accesodatos.modelo.Persona;
-import com.accesodatos.modelo.Sexo;
-
 /**
  * Clase general para cargar archivos de nombres y apellidos 
  * y generar aleatoriamente listas de personas.
  */
-public class GeneradorPersonas {
+public class Personas {
     private List<String> listaNombresHombre;
     private List<String> listaNombresMujer;
     private List<String> listaApellidos;
     private Sexo[] sexos;
+    private List<Personas> personas;
 
-    public GeneradorPersonas(){
+    public Personas(){
         this.sexos = Sexo.values();
     }
 
@@ -130,8 +128,8 @@ public class GeneradorPersonas {
      * @return 
      */
 
-    public List<Persona> generaPersonas(int numero) throws Exception{
-        List<Persona> lista = new ArrayList<Persona>();
+    public void generaPersonas(int numero) throws Exception{
+        //List<Persona> lista = new ArrayList<Persona>();
         if (this.listaApellidos==null||
         this.listaNombresHombre==null||
         this.listaNombresMujer==null) {
@@ -143,11 +141,9 @@ public class GeneradorPersonas {
             "achvos con los nombres y apelidos previamente.");
         }else{
             for(int i = 0; i < numero; i++){
-                lista.add(getRandomPersona());
+                this.personas.add(getRandomPersona());
             }
         }
-        
-        return lista;
     }
 
     private LocalDate generaFecha(){
