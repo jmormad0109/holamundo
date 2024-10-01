@@ -2,9 +2,6 @@ package com.accesodatos.primeraversion;
 
 import com.accesodatos.modelo.Personas;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
         Personas gp = new Personas();

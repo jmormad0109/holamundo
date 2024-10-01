@@ -121,7 +121,7 @@ public class Personas {
                 break;
         }
         p.setEmail(getEmail(p));
-        
+        p.setFechaNacimiento(generaFecha());
         return p;
     }
 
@@ -151,9 +151,11 @@ public class Personas {
     private LocalDate generaFecha(){
         long startingDate = LocalDate.of(1920, 1, 1).toEpochDay();
         long endingDate = LocalDate.now().toEpochDay();
-        
-        
+        long fecha = endingDate - startingDate;
 
-        return null;
+        Random random = new Random();
+        long fechaNacimiento = startingDate + random.nextLong(fecha);
+
+        return LocalDate.ofEpochDay(fechaNacimiento);
     }
 }
