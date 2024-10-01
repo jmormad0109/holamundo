@@ -124,7 +124,7 @@ public class Persona {
             ", \'numeroDNI\'':" + getNumeroDNI() + "'" +
             ", \'letraDNI\'':" + getLetraDNI() + "'" +
             ", \'fechaNacimiento\'':" + getFechaNacimiento() + "'" +
-            "}";
+            "}\n";
     }
 
 }

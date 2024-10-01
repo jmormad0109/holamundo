@@ -80,15 +80,18 @@ public class Personas {
         return s;
     }
 
-    /*
-         * El correo es la primera letra del nombre, 
-         * primer apellido sin espacios, 
-         * segundo apellido sin espacios, 
-         * todo minúscula y quetiamos acentos, letra ñ y letra ç
-         */
+    /**
+     * Genera el email de la persona a partir
+     * de la inicial de su nombre y su apellido
+     * y la terminación de "@educaand"
+     * @param p la persona
+     * @return el email de la persona
+     */
 
     private String getEmail(Persona p){
-        String email = "@educaand.es";
+        String letraNombre = p.getNombre().substring(0,1).toLowerCase();
+        String apellido = p.getApellido().toLowerCase();
+        String email = letraNombre + apellido + "@educaand.es";
 
         return email;
     }
@@ -127,23 +130,22 @@ public class Personas {
      * @param numero persoans a generar
      * @return 
      */
-
-    public void generaPersonas(int numero) throws Exception{
-        //List<Persona> lista = new ArrayList<Persona>();
+    public List<Persona> generaPersonas(int numero) throws Exception{
+        List<Persona> lista = new ArrayList<Persona>();
         if (this.listaApellidos==null||
-        this.listaNombresHombre==null||
-        this.listaNombresMujer==null) {
-
+                this.listaNombresHombre==null||
+                this.listaNombresMujer==null) {
             //System.err.println("Error, no se han cargado los achvos
             // con los nombres y apelidos previamente.");
-
-            throw new Exception("Error, no se han cargado los " + 
-            "achvos con los nombres y apelidos previamente.");
+            throw new Exception("Error, no se han cargado los " +
+                    "achvos con los nombres y apelidos previamente.");
         }else{
             for(int i = 0; i < numero; i++){
-                this.personas.add(getRandomPersona());
+                lista.add(getRandomPersona());
             }
         }
+
+        return lista;
     }
 
     private LocalDate generaFecha(){
